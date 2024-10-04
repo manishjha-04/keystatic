@@ -32,22 +32,22 @@ StyleDictionary.registerParser(w3cJsonParser);
 
 StyleDictionary.registerFormat({
   name: 'css/themed',
-  formatter: cssThemed,
+  format: cssThemed,
 });
 
 StyleDictionary.registerFormat({
   name: 'css/variables',
-  formatter: cssVariables,
+  format: cssVariables,
 });
 
 StyleDictionary.registerFormat({
   name: 'javascript/token-map',
-  formatter: javascriptTokenMap,
+  format: javascriptTokenMap,
 });
 
 StyleDictionary.registerFormat({
   name: 'json/figma',
-  formatter: jsonFigma,
+  format: jsonFigma,
 });
 
 // Transformers

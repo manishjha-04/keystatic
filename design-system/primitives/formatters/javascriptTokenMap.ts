@@ -1,7 +1,6 @@
+import { fileHeader } from "style-dictionary/utils";
 import { setWith } from 'lodash';
 import StyleDictionary from 'style-dictionary';
-
-const { fileHeader } = StyleDictionary.formatHelpers;
 
 export const javascriptTokenMap: StyleDictionary.Formatter = ({
   dictionary,

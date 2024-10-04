@@ -20,9 +20,6 @@ export default config({
       slugField: 'title',
       path: 'src/content/blog/**',
       entryLayout: 'content',
-      format: {
-        contentField: 'content',
-      },
       schema: {
         title: fields.slug({
           name: { label: 'Title', validation: { length: { min: 1 } } },
@@ -51,6 +48,11 @@ export default config({
           tables: true,
           formatting,
         }),
+      },
+      hooks: {
+        formats: {
+          contentField: 'content',
+        }
       },
     }),
   },

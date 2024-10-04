@@ -12,7 +12,6 @@ export default config({
       path: 'design-system/pkg/src/**',
       slugField: 'title',
       entryLayout: 'content',
-      format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'Description', multiline: true }),
@@ -35,13 +34,15 @@ export default config({
           },
         }),
       },
+      hooks: {
+        formats: { contentField: 'content' }
+      },
     }),
     otherDocs: collection({
       label: 'Other Docs',
       path: 'design-system/docs/content/**',
       slugField: 'title',
       entryLayout: 'content',
-      format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         description: fields.text({ label: 'Description', multiline: true }),
@@ -55,6 +56,9 @@ export default config({
             },
           },
         }),
+      },
+      hooks: {
+        formats: { contentField: 'content' }
       },
     }),
   },

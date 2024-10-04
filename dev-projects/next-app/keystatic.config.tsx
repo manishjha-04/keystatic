@@ -275,7 +275,6 @@ export default config({
       path: 'some/directory/people/*/',
       slugField: 'username',
       entryLayout: 'content',
-      format: { contentField: 'bio' },
       schema: {
         name: fields.text({ label: 'Name' }),
         username: fields.text({
@@ -308,6 +307,9 @@ export default config({
           validation: { isRequired: true },
         }),
       },
+      hooks: {
+        formats: { contentField: 'bio' }
+      },
     }),
     packages: collection({
       label: 'Packages',
@@ -328,7 +330,6 @@ export default config({
       label: 'Single File Posts',
       path: 'single-file-posts/**',
       slugField: 'title',
-      format: { contentField: 'content' },
       entryLayout: 'content',
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
@@ -339,12 +340,14 @@ export default config({
           links: true,
         }),
       },
+      hooks: {
+        formats: { contentField: 'content' }
+      },
     }),
     mdx: collection({
       label: 'MDX',
       path: 'mdx/**',
       slugField: 'title',
-      format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         summary: fields.mdx.inline({
@@ -355,12 +358,14 @@ export default config({
           components,
         }),
       },
+      hooks: {
+        formats: { contentField: 'content' }
+      },
     }),
     markdocCollection: collection({
       label: 'Markdoc',
       path: 'markdoc/**',
       slugField: 'title',
-      format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         summary: fields.markdoc.inline({
@@ -371,12 +376,14 @@ export default config({
           components,
         }),
       },
+      hooks: {
+        formats: { contentField: 'content' }
+      },
     }),
     conditionalContent: collection({
       label: 'Conditional Content',
       path: 'conditionalContent/**',
       slugField: 'title',
-      format: { contentField: ['content', 'value', 'content'] },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         content: fields.conditional(
@@ -391,6 +398,9 @@ export default config({
             }),
           }
         ),
+      },
+      hooks: {
+        formats: { contentField: ['content', 'value', 'content'] }
       },
     }),
   },

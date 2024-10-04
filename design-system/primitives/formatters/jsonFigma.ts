@@ -1,11 +1,10 @@
+import { sortByReference, getReferences } from "style-dictionary/utils";
 // credit: https://github.com/primer/primitives/blob/main/src/formats/jsonFigma.ts
 import StyleDictionary from 'style-dictionary';
 import { format } from '@prettier/sync';
 import type { FormatterArguments } from 'style-dictionary/types/Format';
 
 import { transformNamePathToFigma } from '../transformers/namePathToFigma';
-
-const { sortByReference } = StyleDictionary.formatHelpers;
 
 const isReference = (string: string): boolean => /^\{([^\\]*)\}$/g.test(string);
 
@@ -16,7 +15,7 @@ const getReference = (
 ) => {
   if (isReference(refString)) {
     // retrieve reference token
-    const refToken = dictionary.getReferences(refString)[0];
+    const refToken = getReferences(refString, dictionary.tokens)[0];
     // return full reference
     return [
       refToken.attributes?.collection,

@@ -1,8 +1,7 @@
+import { fileHeader } from "style-dictionary/utils";
 import glob from 'fast-glob';
 import fs from 'fs';
 import StyleDictionary from 'style-dictionary';
-
-const { fileHeader } = StyleDictionary.formatHelpers;
 
 const build = ({
   destination,

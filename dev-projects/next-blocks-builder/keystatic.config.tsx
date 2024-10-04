@@ -27,7 +27,6 @@ export default config({
       label: 'Pages',
       path: 'src/content/pages/**',
       slugField: 'title',
-      format: { contentField: 'content' },
       entryLayout: 'content',
       previewUrl: `/{slug}`,
       schema: {
@@ -44,6 +43,9 @@ export default config({
             callToAction,
           },
         }),
+      },
+      hooks: {
+        formats: { contentField: 'content' }
       },
     }),
     testimonials: collection({

@@ -1,11 +1,10 @@
+import { fileHeader, formattedVariables } from "style-dictionary/utils";
 import { format } from '@prettier/sync';
 import StyleDictionary from 'style-dictionary';
 import type { FormatterArguments } from 'style-dictionary/types/Format';
 import type { LineFormatting } from 'style-dictionary/types/FormatHelpers';
 
 import { SELECTOR_DEFAULT } from '../constants';
-
-const { fileHeader, formattedVariables } = StyleDictionary.formatHelpers;
 
 /**
  * @description Converts `StyleDictionary.dictionary.tokens` to css with prefers dark and light section

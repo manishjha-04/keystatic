@@ -11,10 +11,12 @@ export default config({
       label: 'Posts',
       slugField: 'title',
       path: 'posts/*',
-      format: { contentField: 'content' },
       schema: {
         title: fields.slug({ name: { label: 'Title' } }),
         content: fields.markdoc({ label: 'Content' }),
+      },
+      hooks: {
+        formats: { contentField: 'content' }
       },
     }),
   },

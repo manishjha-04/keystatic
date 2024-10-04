@@ -60,14 +60,14 @@ Desired output
 }
 */
 
-export const buildFigma = (buildOptions: ConfigGeneratorOptions): void => {
+export const buildFigma = async (buildOptions: ConfigGeneratorOptions): void => {
   /** -----------------------------------
    * Color collection
    * ----------------------------------- */
   for (const { filename, source, include } of themes) {
     if (['light', 'dark'].includes(filename)) {
       // build functional scales
-      KeystarStyleDictionary.extend({
+      await KeystarStyleDictionary.extend({
         source,
         include,
         platforms: {

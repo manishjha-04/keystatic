@@ -36,15 +36,13 @@ const getStyleDictionaryConfig: StyleDictionaryConfigGenerator = (
   },
 });
 
-export const buildDesignTokens = (
-  buildOptions: ConfigGeneratorOptions
-): void => {
+export const buildDesignTokens = async (buildOptions: ConfigGeneratorOptions): void => {
   // buildFigma(buildOptions);
 
   /** -----------------------------------
    * Animation tokens
    * ----------------------------------- */
-  KeystarStyleDictionary.extend(
+  await KeystarStyleDictionary.extend(
     getStyleDictionaryConfig(
       `animation/animation`,
       ['tokens/animation/animation.json5'],
@@ -57,7 +55,7 @@ export const buildDesignTokens = (
    * Colors, shadows & borders
    * ----------------------------------- */
   for (const { filename, source, include } of themes) {
-    KeystarStyleDictionary.extend(
+    await KeystarStyleDictionary.extend(
       getStyleDictionaryConfig(`themes/${filename}`, source, include, {
         ...buildOptions,
         themed: true,
@@ -70,7 +68,7 @@ export const buildDesignTokens = (
    * ----------------------------------- */
   const sizeFiles = glob.sync('tokens/size/*');
   for (const file of sizeFiles) {
-    KeystarStyleDictionary.extend(
+    await KeystarStyleDictionary.extend(
       getStyleDictionaryConfig(
         `size/${file.replace('tokens/size/', '').replace('.json5', '')}`,
         [file],
@@ -83,7 +81,7 @@ export const buildDesignTokens = (
   /** -----------------------------------
    * Typography tokens
    * ----------------------------------- */
-  KeystarStyleDictionary.extend(
+  await KeystarStyleDictionary.extend(
     getStyleDictionaryConfig(
       `typography/typography`,
       ['tokens/typography/typography.json5'],
@@ -96,7 +94,7 @@ export const buildDesignTokens = (
    * JavaScript token schema
    * ----------------------------------- */
   const allFiles = glob.sync('tokens/**/*.json5');
-  KeystarStyleDictionary.extend(
+  await KeystarStyleDictionary.extend(
     getStyleDictionaryConfig(
       `tokenSchema`,
       // we don't care about values. dark tokens excluded to avoid collisions

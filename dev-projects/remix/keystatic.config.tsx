@@ -62,7 +62,6 @@ export default config({
       label: 'Single File Posts',
       path: 'single-file-posts/*/',
       slugField: 'slug',
-      format: { contentField: 'content' },
       schema: {
         title: fields.text({ label: 'Title' }),
         slug: fields.text({ label: 'Slug' }),
@@ -72,6 +71,9 @@ export default config({
           dividers: true,
           links: true,
         }),
+      },
+      hooks: {
+        formats: { contentField: 'content' }
       },
     }),
   },
